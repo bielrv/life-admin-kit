@@ -1,0 +1,13 @@
+{
+  "name": "life-admin-kit",
+  "owner": {
+    "name": "bielrv"
+  },
+  "plugins": [
+    {
+      "name": "life-admin-kit",
+      "source": ".",
+      "description": "Turn your Google Drive (or any file tree) into an AI-managed filing system: dropzone in, filed and renamed out, with a self-maintaining filing map."
+    }
+  ]
+}

@@ -4,16 +4,16 @@ Two ways to install. Either way, you finish by running the setup interview.
 
 ## Option A — as a Claude Code plugin
 
-The repo ships a `.claude-plugin/plugin.json` manifest, so it can be installed as a
-plugin. From within Claude Code:
+The repo ships its own plugin manifest and marketplace file, so it installs straight
+from GitHub. From within Claude Code:
 
 ```
-/plugin install life-admin-kit@<marketplace>
+/plugin marketplace add bielrv/life-admin-kit
+/plugin install life-admin-kit@life-admin-kit
 ```
 
-or add this repo directly (see the Claude Code docs for `/plugin marketplace add`
-with a GitHub repo). The three skills (`setup-drive`, `file-inbox`,
-`drive-health-check`) become available in every project.
+The three skills (`setup-drive`, `file-inbox`, `drive-health-check`) become
+available in every project.
 
 Note: the `templates/` folder is used by the `setup-drive` skill; when installed as a
 plugin the skill finds it relative to its own location.
