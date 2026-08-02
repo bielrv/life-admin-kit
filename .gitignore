@@ -1,0 +1,25 @@
+# OS junk
+desktop.ini
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+._*
+
+# Google Drive sync artifacts
+*.gdoc
+*.gsheet
+*.gslides
+*.gdraw
+*.gform
+*.tmp.driveupload
+*.tmp.drivedownload
+.tmp.driveupload/
+.tmp.drivedownload/
+*.driveupload
+*.drivedownload
+~$*
+
+# Editor droppings
+*.swp
+*~

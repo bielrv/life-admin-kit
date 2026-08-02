@@ -1,0 +1,96 @@
+# {{DRIVE_NAME}} — {{OWNER_HANDLE}}
+
+<!--
+  This is the schema of the entire filing system. Claude reads it at the start of
+  every session opened at the drive root. Keep it accurate: when the folder
+  structure changes, change this file in the same session.
+
+  {{PLACEHOLDERS}} are filled in by the /setup-drive skill (or by hand).
+-->
+
+Personal drive for {{OWNER_HANDLE}}. Contains {{ONE_LINE_SUMMARY_OF_DOMAINS,
+e.g. "personal documents, freelance records, and investment paperwork"}}.
+
+## Folder Structure
+
+```
+{{DRIVE_ROOT}}/
+├── 00. Dropzone/             # Drop zone: user saves files here, Claude files them (see Dropzone workflow)
+├── 01. Documents/            # Personal docs by category (IDs, payslips, tax…)
+{{ADDITIONAL_TOP_LEVEL_FOLDERS
+  One line per domain the owner actually has. Keep zero-padded numbering. Examples:
+├── 02. Property/             # Real-estate / rental paperwork (one folder per property)
+├── 03. Vehicles/             # Car / motorbike docs (one folder per vehicle, plate in the name)
+├── 04. Work/                 # Employers, freelance clients, business records
+├── 05. Investments/          # Brokerage exports, fund docs, annual declarations
+├── 06. Trips/                # One folder per trip: YYYY-MM Destination
+├── 07. Learning/             # Courses, certificates
+}}
+├── 9X. <Archive>/            # 9X. prefix = archived, closed chapters — file historical material only
+└── 99. Others/               # True miscellaneous only
+```
+
+The drive root must stay empty of loose files except this CLAUDE.md.
+
+## Dropzone workflow
+
+`00. Dropzone/` is the standing drop zone. The user downloads/saves files there without
+worrying about naming or destination. When asked to organize (or when working in the
+drive and the dropzone is non-empty), Claude should **directly, without asking per
+file**: rename each file to the `YYYY-MM-DD Description` convention and move it to the
+correct subfolder, matching existing category folders. Only ask when the destination is
+genuinely ambiguous. The drive root and the dropzone should end up empty of loose files.
+
+{{IF_BROWSER_DOWNLOAD_FOLDER
+If the browser saves downloads into the drive (e.g. a "Saved from Chrome/" folder),
+list it here and treat it exactly like the dropzone.}}
+
+## Documents (`01. Documents/`)
+
+Personal documents by category, zero-padded numbered subfolders. Adapt to the owner:
+
+| # | Name | Notes |
+|---|------|-------|
+| 00 | Expired documents | Archive for expired IDs etc. |
+| 01 | IDs | National ID, passport |
+| 02 | CVs | |
+| 03 | Payslips | Organised by year |
+| 04 | Tax returns | {{COUNTRY_TAX_NOTE, e.g. "US federal + state" / "UK self-assessment"}} |
+| 05 | Contracts | Personal contracts |
+| 06 | Insurance | Policy docs |
+| 07 | Medical | Reports, checkups, vaccination certs |
+| {{…}} | {{…}} | {{Add / remove rows for the owner's actual life}} |
+
+{{PER_DOMAIN_SECTIONS
+One short section per major domain, describing its internal convention. Example for a
+property domain:
+
+### Property (`02. Property/`)
+One folder per property, numbered: `01.*` = currently owned/rented, `9X.*` =
+sold/archived. Each property folder has: Contracts, Utilities, Insurance, Mortgage,
+Tenants, Others. Utility invoices go in `Utilities/<type>/` (Electricity, Water, Gas,
+Internet), provider named in the filename; identify the property by the supply address
+inside the invoice. The domain root must hold no loose files.}}
+
+## Conventions
+
+- Folders prefixed with zero-padded numbers for ordering (`00.`, `01.`…); `9X.` prefix = archived
+- Dates in filenames follow `YYYY-MM-DD` format: `YYYY-MM-DD Description.ext`
+- Spaces in filenames, not underscores
+- When filing a document, match an existing category subfolder before creating a new one
+- {{LANGUAGES_NOTE, e.g. "Filenames may mix English and <language> depending on the document"}}
+
+## Common Tasks
+
+- File a received invoice or document into the correct subfolder
+- Find a specific document (by date, provider, or type)
+- Summarize what's in a folder or check for gaps
+
+## Other filing notes
+
+- When filing a document that carries an expiry/renewal date (ID, insurance policy,
+  vehicle inspection), also update `01. Documents/00. Expiry & Renewals Tracker.xlsx`
+  (or the owner's equivalent tracker)
+- Never store recovery codes, authenticator backups, or private-key files (`.p12`,
+  `.pem`) loose in the drive — flag them to the user for a password manager
+- {{OWNER_SPECIFIC_NOTES}}

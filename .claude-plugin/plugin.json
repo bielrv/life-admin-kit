@@ -1,0 +1,13 @@
+{
+  "name": "life-admin-kit",
+  "version": "0.1.0",
+  "description": "Turn a personal Google Drive (or any file tree) into an AI-managed filing system: dropzone in, filed and renamed out. CLAUDE.md as schema, skills as automations, a self-maintaining filing map as learned state.",
+  "license": "MIT",
+  "keywords": [
+    "filing",
+    "documents",
+    "google-drive",
+    "life-admin",
+    "organization"
+  ]
+}
