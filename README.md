@@ -10,6 +10,8 @@ ever thinking about it again.
 Built from a real system that has been filing one person's entire life admin — tax
 returns, utility invoices, rental property paperwork, payslips, medical records, travel
 bookings — for months, hands-off. This kit is the genericized, battle-tested version.
+The full story, including the day it destroyed data and the guardrails that came out of
+it: [I gave Claude Code my Google Drive](https://bielrv.substack.com/p/i-gave-claude-code-my-google-drive).
 
 ## The idea in one diagram
 
